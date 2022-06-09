@@ -38,6 +38,14 @@
   color: #fff;
   text-shadow: 0 8px 2px #000;
 }
+
+.center > span {
+  font-style: italic;
+  display: inline-block;
+  margin-top: 24px;
+  opacity: 0%;
+  animation: fadein 1s linear forwards;
+  animation-delay: 1.8s;
 }
 
 @keyframes fadein {
