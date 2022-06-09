@@ -26,18 +26,15 @@
   animation: text 4s linear infinite alternate;
 }
 
-@keyframes text {
+@keyframes fadein {
   from {
-    text-shadow: 0 4px 4px #333;
+    opacity: 0%;
   }
   to {
-    text-shadow: 0 8px 8px #333;
+    opacity: 100%;
   }
 }
 
-.center > h1 {
-  font-size: 48px;
-  margin: 0;
 @keyframes wave {
   from {
     transform: translateY(-8px);
