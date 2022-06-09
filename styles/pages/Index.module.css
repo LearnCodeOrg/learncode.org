@@ -15,3 +15,13 @@
     filter: hue-rotate(360deg);
   }
 }
+
+.center {
+  text-align: center;
+  animation: text 4s linear infinite alternate;
+}
+
+.center > h1 {
+  font-size: 48px;
+  margin: 0;
+}
