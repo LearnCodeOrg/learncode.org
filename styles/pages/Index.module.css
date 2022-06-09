@@ -30,6 +30,14 @@
   font-size: 64px;
   margin: 0;
 }
+
+.char {
+  display: inline-block;
+  opacity: 0%;
+  animation: wave 1s ease-in-out infinite alternate;
+  color: #fff;
+  text-shadow: 0 8px 2px #000;
+}
 }
 
 @keyframes fadein {
