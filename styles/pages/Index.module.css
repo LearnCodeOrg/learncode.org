@@ -6,3 +6,12 @@
   background: linear-gradient(120deg, rgba(2,0,36,0.5) 0%, rgba(9,78,121,0.5) 35%, rgba(0,212,255,0.5) 100%);
   animation: back 10s linear infinite alternate;
 }
+
+@keyframes back {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
