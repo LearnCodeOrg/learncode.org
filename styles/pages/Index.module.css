@@ -21,6 +21,15 @@
   animation: text 4s linear infinite alternate;
 }
 
+@keyframes text {
+  from {
+    text-shadow: 0 4px 4px #333;
+  }
+  to {
+    text-shadow: 0 8px 8px #333;
+  }
+}
+
 .center > h1 {
   font-size: 48px;
   margin: 0;
