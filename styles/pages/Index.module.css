@@ -22,8 +22,14 @@
 }
 
 .center {
+  justify-content: center;
   text-align: center;
-  animation: text 4s linear infinite alternate;
+}
+
+.center > p {
+  font-size: 64px;
+  margin: 0;
+}
 }
 
 @keyframes fadein {
