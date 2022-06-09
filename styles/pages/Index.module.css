@@ -50,4 +50,14 @@
   }
 }
 
+@media (max-width: 767px) {
+  .center > p {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 575px) {
+  .center > p {
+    font-size: 32px;
+  }
 }
