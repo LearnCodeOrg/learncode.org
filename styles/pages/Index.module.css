@@ -38,4 +38,16 @@
 .center > h1 {
   font-size: 48px;
   margin: 0;
+@keyframes wave {
+  from {
+    transform: translateY(-8px);
+    opacity: 100%;
+  }
+  to {
+    transform: translateY(8px);
+    opacity: 100%;
+    color: rgba(255, 255, 0, 1);
+  }
+}
+
 }
