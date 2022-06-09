@@ -4,9 +4,20 @@ export default function Index() {
   return (
     <div className={styles.container}>
       <div className={styles.center}>
-        <h1>CodeWithGames</h1>
-        <p>Learn to code by making games.</p>
-        <p><i>Coming soon.</i></p>
+        <p>
+          {
+            'CodeWithGames'.split('').map((char, i) =>
+              <span
+                className={styles.char}
+                style={{ animationDelay: `${0.1 * i}s` }}
+                key={i}
+              >
+                {char}
+              </span>
+            )
+          }
+        </p>
+        <span>coming soon</span>
       </div>
     </div>
   );
