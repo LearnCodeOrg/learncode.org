@@ -21,6 +21,17 @@ export default function Snake() {
     // clear canvas
     ctx.fillStyle = '#eee';
     ctx.fillRect(0, 0, width, height);
+    // draw grid
+    ctx.fillStyle = 'white';
+    const tileSize = (width > height ? width : height) / mapSize;
+    const diff = (width > height ? width - height : height - width) / 2;
+    for (let x = 0; x < mapSize; x++) {
+      for (let y = 0; y < mapSize; y++) {
+        const tileX = x * tileSize + borderPixels - (width > height ? 0 : diff);
+        const tileY = y * tileSize + borderPixels - (width > height ? diff : 0);
+        ctx.fillRect(tileX, tileY, tileSize - borderPixels * 2, tileSize - borderPixels * 2);
+      }
+    }
   }
 
   // called on window resize
