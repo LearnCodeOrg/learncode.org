@@ -39,6 +39,11 @@ export default function Snake() {
       const tileY = tile[1] * tileSize - (width > height ? diff : 0);
       ctx.fillRect(tileX, tileY, tileSize, tileSize);
     }
+    // draw apple
+    ctx.fillStyle = 'red';
+    const tileX = appleX * tileSize - (width > height ? 0 : diff);
+    const tileY = appleY * tileSize - (width > height ? diff : 0);
+    ctx.fillRect(tileX, tileY, tileSize, tileSize);
   }
 
   // called on window resize
