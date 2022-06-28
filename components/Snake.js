@@ -32,6 +32,13 @@ export default function Snake() {
         ctx.fillRect(tileX, tileY, tileSize - borderPixels * 2, tileSize - borderPixels * 2);
       }
     }
+    // draw snake
+    ctx.fillStyle = 'green';
+    for (const tile of snake) {
+      const tileX = tile[0] * tileSize - (width > height ? 0 : diff);
+      const tileY = tile[1] * tileSize - (width > height ? diff : 0);
+      ctx.fillRect(tileX, tileY, tileSize, tileSize);
+    }
   }
 
   // called on window resize
