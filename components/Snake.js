@@ -10,6 +10,8 @@ let canvas, ctx;
 let snakeX, snakeY;
 let appleX, appleY;
 let snake = [];
+let moves = [];
+let direction = 'right';
 
 // screen bounds
 let minX = 0, maxX = mapSize - 1;
@@ -55,6 +57,17 @@ export default function Snake() {
   function onResize() {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
+  }
+
+  // moves snake in new direction
+  function move(newDirection) {
+    const nextDirection = moves.length ? moves[0] : direction;
+    if (newDirection === nextDirection) return;
+    if (newDirection === 'up' && nextDirection === 'down') return;
+    if (newDirection === 'left' && nextDirection === 'right') return;
+    if (newDirection === 'down' && nextDirection === 'up') return;
+    if (newDirection === 'right' && nextDirection === 'left') return;
+    moves.push(newDirection);
   }
 
   // called on key press
