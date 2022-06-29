@@ -124,6 +124,20 @@ export default function Snake() {
     ) {
       apple();
     }
+    // end game
+    if (snake.some(tile => tile[0] === snakeX && tile[1] === snakeY)) {
+      reset();
+      return;
+    }
+    // update snake
+    snake.push([snakeX, snakeY]);
+    if (snakeX === appleX && snakeY === appleY) {
+      apple();
+      score += 1
+      caption();
+      setFade(true);
+    } else snake.shift();
+    draw();
   }
 
   // on start
