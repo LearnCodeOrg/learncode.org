@@ -130,6 +130,25 @@ export default function Snake() {
     touchY = touch.clientY;
   }
 
+  // on touch move
+  function onTouchMove(e) {
+    if (!touchX || !touchY) return;
+    // get swipe delta
+    var newX = e.touches[0].clientX;
+    var newY = e.touches[0].clientY;
+    const deltaX = newX - touchX;
+    const deltaY = newY - touchY;
+    // check swipe direction
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      move(deltaX > 0 ? 'right' : 'left');
+    } else {
+      move(deltaY > 0 ? 'down' : 'up');
+    }
+    // reset touch
+    touchX = null;
+    touchY = null;
+  }
+
   // gets bounds of screen
   function getBounds() {
     // get viewable dimensions
