@@ -57,6 +57,17 @@ export default function Snake() {
     setHeight(window.innerHeight);
   }
 
+  // called on key press
+  function onKeydown(e) {
+    if (e.repeat) return;
+    const key = e.key.toLowerCase();
+    if (['w', 'arrowup'].includes(key)) move('up');
+    else if (['a', 'arrowleft'].includes(key)) move('left');
+    else if (['s', 'arrowdown'].includes(key)) move('down');
+    else if (['d', 'arrowright'].includes(key)) move('right');
+    else if (key === 'escape') setFade(false);
+  }
+
   // on start
   useEffect(() => {
     canvas = canvasRef.current;
