@@ -12,6 +12,8 @@ let appleX, appleY;
 let snake = [];
 let moves = [];
 let direction = 'right';
+let score = 0;
+let highScore = 0;
 let touchX = null, touchY = null;
 let initialized = false;
 
@@ -22,6 +24,8 @@ let minY = 0, maxY = mapSize - 1;
 export default function Snake() {
   const canvasRef = useRef();
 
+  const [scoreText, setScoreText] = useState('');
+  const [highScoreText, setHighScoreText] = useState('');
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
 
@@ -99,6 +103,12 @@ export default function Snake() {
     score = 0;
     caption();
     draw();
+  }
+
+  // sets score captions
+  function caption() {
+    setScoreText(score);
+    setHighScoreText(`★${highScore}`);
   }
 
   // update function
@@ -252,6 +262,8 @@ export default function Snake() {
 
   return (
     <div>
+      <p className={styles.score} style={textStyle}>{scoreText}</p>
+      <p className={styles.highScore} style={textStyle}>{highScoreText}</p>
       <canvas
         ref={canvasRef}
         width={width}
