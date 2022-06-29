@@ -96,6 +96,23 @@ export default function Snake() {
     draw();
   }, [width, height]);
 
+  // refreshes apple position
+  function apple() {
+    // get all valid tiles
+    let validTiles = [];
+    for (let x = minX; x < maxX + 1; x++) {
+      for (let y = minY; y < maxY + 1; y++) {
+        // if valid tile
+        if (
+          // in snake
+          snakeX !== x && snakeY !== y &&
+          // in line with snake
+          !snake.some(tile => tile[0] === x && tile[1] === y)
+        ) validTiles.push([x, y]);
+      }
+    }
+  }
+
   return (
     <div>
       <canvas
