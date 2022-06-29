@@ -12,6 +12,8 @@ let appleX, appleY;
 let snake = [];
 let moves = [];
 let direction = 'right';
+let touchX = null, touchY = null;
+let initialized = false;
 
 // screen bounds
 let minX = 0, maxX = mapSize - 1;
@@ -120,6 +122,13 @@ export default function Snake() {
       document.removeEventListener('touchmove', onTouchMove);
     }
   }, []);
+
+  // on touch start
+  function onTouchStart(e) {
+    const touch = e.touches[0];
+    touchX = touch.clientX;
+    touchY = touch.clientY;
+  }
 
   // gets bounds of screen
   function getBounds() {
