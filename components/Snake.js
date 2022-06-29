@@ -115,6 +115,15 @@ export default function Snake() {
     if (snakeX > maxX) snakeX = minX;
     if (snakeY < minY) snakeY = maxY;
     if (snakeY > maxY) snakeY = minY;
+    // move apple if not set
+    if (appleX === undefined && appleY == undefined) apple();
+    // move apple if out of bounds
+    else if (
+      (appleX !== null && appleY !== null) &&
+      (appleX < minX || appleX > maxX || appleY < minY || appleY > maxY)
+    ) {
+      apple();
+    }
   }
 
   // on start
