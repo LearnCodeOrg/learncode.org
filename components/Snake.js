@@ -68,6 +68,24 @@ export default function Snake() {
     else if (key === 'escape') setFade(false);
   }
 
+  // resets game to beginning
+  function reset() {
+    snakeX = minX;
+    snakeY = minY;
+    snake = [[snakeX, snakeY]];
+    apple();
+    moves = [];
+    direction = 'right';
+    // update high score
+    if (score > highScore) {
+      highScore = score;
+      window.localStorage.setItem('highScore', highScore);
+    }
+    score = 0;
+    caption();
+    draw();
+  }
+
   // on start
   useEffect(() => {
     canvas = canvasRef.current;
