@@ -10,6 +10,10 @@ let snakeX, snakeY;
 let appleX, appleY;
 let snake = [];
 
+// screen bounds
+let minX = 0, maxX = mapSize - 1;
+let minY = 0, maxY = mapSize - 1;
+
 export default function Snake() {
   const canvasRef = useRef();
 
@@ -66,6 +70,15 @@ export default function Snake() {
       window.removeEventListener('resize', onResize);
     }
   }, []);
+
+  // on screen change
+  useEffect(() => {
+    // check window is ready
+    if (!width || !height) return;
+    // update bounds
+    getBounds();
+    draw();
+  }, [width, height]);
 
   return (
     <div>
