@@ -1,9 +1,15 @@
 import styles from '../styles/pages/Index.module.css';
 
 export default function Index() {
+  const [fade, setFade] = useState(false);
+
   return (
     <div className={styles.container}>
-      <div className={styles.center}>
+      <Snake fade={fade} setFade={setFade} />
+      <div
+        className={styles.center}
+        style={fade ? { opacity: 0.5 } : {}}
+      >
         <p>
           {
             'CodeWithGames'.split('').map((char, i) =>

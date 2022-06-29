@@ -4,6 +4,7 @@ import styles from '../styles/components/Snake.module.css';
 
 const mapSize = 16; // map grid size
 const borderPixels = 1; // pixels in grid border
+const blockEpsilon = 0.5; // amount of block needed to occupy
 const updateTime = 200; // update interval in milliseconds
 
 let canvas, ctx;
@@ -21,13 +22,17 @@ let initialized = false;
 let minX = 0, maxX = mapSize - 1;
 let minY = 0, maxY = mapSize - 1;
 
-export default function Snake() {
+export default function Snake(props) {
+  const { fade, setFade } = props;
+
   const canvasRef = useRef();
 
   const [scoreText, setScoreText] = useState('');
   const [highScoreText, setHighScoreText] = useState('');
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
+
+  const textStyle = fade ? { opacity: 1 } : { opacity: 0, pointerEvents: 'none' };
 
   // draws canvas
   function draw() {
@@ -261,10 +266,12 @@ export default function Snake() {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <p className={styles.score} style={textStyle}>{scoreText}</p>
       <p className={styles.highScore} style={textStyle}>{highScoreText}</p>
+      <p className={styles.esc} style={textStyle} onClick={() => setFade(false)}>esc↩</p>
       <canvas
+        style={fade ? {} : { opacity: 0.5 }}
         ref={canvasRef}
         width={width}
         height={height}
