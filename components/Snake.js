@@ -4,6 +4,7 @@ import styles from '../styles/components/Snake.module.css';
 
 const mapSize = 16; // map grid size
 const borderPixels = 1; // pixels in grid border
+const updateTime = 200; // update interval in milliseconds
 
 let canvas, ctx;
 let snakeX, snakeY;
@@ -94,6 +95,17 @@ export default function Snake() {
     // update bounds
     getBounds();
     draw();
+    // initialize
+    if (!initialized) {
+      highScore = window.localStorage.getItem('highScore') ?? 0;
+      reset();
+      initialized = true;
+    }
+    // set up update
+    const updateInterval = setInterval(update, updateTime);
+    return () => {
+      clearInterval(updateInterval);
+    };
   }, [width, height]);
 
   // refreshes apple position
