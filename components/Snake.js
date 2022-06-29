@@ -75,11 +75,18 @@ export default function Snake() {
     // initialize dimensions
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
-    // set up resize listener
+    // set up resize and keydown listeners
     window.addEventListener('resize', onResize);
+    window.addEventListener('keydown', onKeydown);
+    // set up touch listeners
+    document.addEventListener('touchstart', onTouchStart);
+    document.addEventListener('touchmove', onTouchMove);
     // clean up listeners on return
     return () => {
       window.removeEventListener('resize', onResize);
+      window.removeEventListener('keydown', onKeydown);
+      document.removeEventListener('touchstart', onTouchStart);
+      document.removeEventListener('touchmove', onTouchMove);
     }
   }, []);
 
