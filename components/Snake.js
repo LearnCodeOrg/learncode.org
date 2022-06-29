@@ -71,6 +71,22 @@ export default function Snake() {
     }
   }, []);
 
+  // gets bounds of screen
+  function getBounds() {
+    // get viewable dimensions
+    const wide = width > height;
+    const halfMap = Math.round(mapSize / 2);
+    const epsilon = blockEpsilon * 2;
+    const tileSize = (wide ? width : height) / mapSize;
+    const viewable = (wide ? height : width) / tileSize;
+    const halfViewable = Math.floor((viewable - epsilon) / 2);
+    // set bounds based on viewable
+    minX = wide ? 0 : halfMap - halfViewable - 1;
+    maxX = wide ? mapSize - 1 : halfMap + halfViewable;
+    minY = wide ? halfMap - halfViewable - 1 : 0;
+    maxY = wide ? halfMap + halfViewable : mapSize - 1;
+  }
+
   // on screen change
   useEffect(() => {
     // check window is ready
