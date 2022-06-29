@@ -101,6 +101,22 @@ export default function Snake() {
     draw();
   }
 
+  // update function
+  function update() {
+    // pop move
+    if (moves.length) direction = moves.shift();
+    // move snake head
+    if (direction === 'up') snakeY -= 1;
+    if (direction === 'left') snakeX -= 1;
+    if (direction === 'down') snakeY += 1;
+    if (direction === 'right') snakeX += 1;
+    // bound snake
+    if (snakeX < minX) snakeX = maxX;
+    if (snakeX > maxX) snakeX = minX;
+    if (snakeY < minY) snakeY = maxY;
+    if (snakeY > maxY) snakeY = minY;
+  }
+
   // on start
   useEffect(() => {
     canvas = canvasRef.current;
