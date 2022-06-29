@@ -111,6 +111,15 @@ export default function Snake() {
         ) validTiles.push([x, y]);
       }
     }
+    // return if no valid tiles for apple
+    if (!validTiles.length) {
+      [appleX, appleY] = [null, null];
+      return;
+    }
+    // get random apple tile
+    const randomIndex = Math.floor(Math.random() * validTiles.length);
+    const randomTile = validTiles[randomIndex];
+    [appleX, appleY] = randomTile;
   }
 
   return (
