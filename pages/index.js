@@ -20,7 +20,7 @@ export default function Index() {
       >
         <p>
           {
-            'CodeWithGames'.split('').map((char, i) =>
+            'CodeTeach.org'.split('').map((char, i) =>
               <span
                 className={styles.char}
                 style={{ animationDelay: `${0.1 * i}s` }}
