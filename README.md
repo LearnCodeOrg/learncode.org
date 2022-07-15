@@ -1,5 +1,5 @@
-# CodeWithGames.com
+# CodeTeach.org
 
-The CodeWithGames homepage.
+The CodeTeach homepage.
 
-[codewithgames.com](https://codewithgames.com)
+[codeteach.org](https://www.codeteach.org/)
