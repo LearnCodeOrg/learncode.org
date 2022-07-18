@@ -1,5 +1,5 @@
-# CodeTeach.org
+# LearnCode.org
 
-The CodeTeach homepage.
+The LearnCode.org homepage.
 
-[codeteach.org](https://www.codeteach.org/)
+[learncode.org](https://www.learncode.org/)
