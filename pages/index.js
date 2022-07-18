@@ -1,8 +1,8 @@
-import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailIcon from '@mui/icons-material/Email';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import Snake from '../components/Snake';
 import Link from '../components/Link';
+import Snake from '../components/Snake';
 
 import { useState } from 'react';
 
