@@ -33,13 +33,13 @@ export default function Index() {
         </p>
         <span>coming soon</span>
         <div className={styles.icons}>
-          <Link to="https://github.com/CodeTeachOrg">
+          <Link to="https://github.com/LearnCodeOrg">
             <GitHubIcon />
           </Link>
-          <Link to="mailto:hi@codeteach.org">
+          <Link to="mailto:hi@learncode.org">
             <EmailIcon />
           </Link>
-          <Link to="https://twitter.com/CodeTeachOrg">
+          <Link to="https://twitter.com/LearnCodeOrg">
             <TwitterIcon />
           </Link>
         </div>
