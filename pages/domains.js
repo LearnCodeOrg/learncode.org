@@ -1,8 +1,28 @@
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import styles from '../styles/pages/Domains.module.css';
 import { listings } from '../util/listings';
 
 export default function Domains() {
+  const router = useRouter();
+
+  // highlight selected domain on start
+  useEffect(() => {
+    // get domain from router
+    const { d } = router.query;
+    if (!d) return;
+    // get listing
+    const listing = document.getElementById(d.toLowerCase());
+    if (!listing) return;
+    // highlight listing
+    listing.scrollIntoView();
+    listing.style.background = '#efefef';
+    listing.style.padding = '20px 10px';
+    listing.style.borderRadius = '10px';
+    listing.style.boxShadow = '0 0 10px #999';
+  }, [router.query])
+
   return (
     <div className={styles.container}>
       <div className={styles.background}>
