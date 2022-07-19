@@ -95,7 +95,7 @@ export default function Snake(props) {
   // resets game to beginning
   function reset() {
     snakeX = minX;
-    snakeY = minY;
+    snakeY = maxY;
     snake = [[snakeX, snakeY]];
     apple();
     moves = [];
