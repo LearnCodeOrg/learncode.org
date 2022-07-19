@@ -45,6 +45,62 @@
   justify-content: center;
 }
 
+.listing {
+  display: flex;
+  justify-content: center;
+  margin: 16px;
+}
+
+.listing>a,
+.contactUs {
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.listing>a:active,
+.contactUs:active {
+  transform: scale(0.98);
+}
+
+.listing>a {
+  background: #f14c2e;
+  padding: 12px 20px;
+}
+
+.listing>a:hover {
+  background: #dd2f0f;
+}
+
+.details {
+  width: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-right: 16px;
+}
+
+.details>a {
+  color: #2196f3;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.details>a:hover {
+  color: #3f51b5;
+  text-decoration: underline;
+}
+
+.details>p {
+  color: #999;
+  margin: 0;
+  font-size: 12px;
+}
+
 .contactUs {
   background: #3aaaf2;
   padding: 20px;
