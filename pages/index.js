@@ -1,6 +1,9 @@
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import MenuIcon from '@mui/icons-material/Menu';
+import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import { IconButton, Menu, MenuItem } from '@mui/material';
 import NextLink from 'next/link';
 import Link from '../components/Link';
 import Snake from '../components/Snake';
@@ -34,6 +37,40 @@ export default function Index() {
         </NextLink>
       </div>
       <div
+        className={styles.menu}
+        style={{ opacity: fade ? 0 : 1 }}
+      >
+        <IconButton onClick={e => setMenuAnchor(e.currentTarget)}>
+          {menuAnchor ? <MenuOpenIcon /> : <MenuIcon />}
+        </IconButton>
+        <ThemeProvider theme={theme}>
+          <Menu
+            anchorEl={menuAnchor}
+            open={!!menuAnchor}
+            onClose={() => setMenuAnchor(null)}
+          >
+            <MenuItem onClick={() => {
+              window.open('https://www.codecreatively.com/');
+              setMenuAnchor(null);
+            }}>
+              CodeCreatively
+            </MenuItem>
+            <MenuItem onClick={() => {
+              window.open('https://ko-fi.com/learncode');
+              setMenuAnchor(null);
+            }}>
+              Support LearnCode.org
+            </MenuItem>
+            <MenuItem onClick={() => {
+              Router.push('/domains')
+              setMenuAnchor(null);
+            }}>
+              Domains
+            </MenuItem>
+          </Menu>
+        </ThemeProvider>
+      </div>
+        <div
         className={styles.center}
         style={fade ? { opacity: 0.5 } : {}}
       >
