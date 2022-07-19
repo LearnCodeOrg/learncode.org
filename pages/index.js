@@ -1,6 +1,7 @@
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import NextLink from 'next/link';
 import Link from '../components/Link';
 import Snake from '../components/Snake';
 
@@ -14,6 +15,24 @@ export default function Index() {
   return (
     <div className={styles.container}>
       <Snake fade={fade} setFade={setFade} />
+      <div
+        className={styles.links}
+        style={{ opacity: fade ? 0 : 1 }}
+      >
+        <a
+          href="https://www.codecreatively.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >CodeCreatively</a>
+        <a
+          href="https://ko-fi.com/learncode"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Support LearnCode.org</a>
+        <NextLink href="/domains">
+          <a>Domains</a>
+        </NextLink>
+      </div>
       <div
         className={styles.center}
         style={fade ? { opacity: 0.5 } : {}}
