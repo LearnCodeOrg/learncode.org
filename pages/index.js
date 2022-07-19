@@ -4,20 +4,39 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { IconButton, Menu, MenuItem } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Image from 'next/image';
 import NextLink from 'next/link';
+import Router from 'next/router';
+import { useState } from 'react';
 import Link from '../components/Link';
 import Snake from '../components/Snake';
-
-import { useState } from 'react';
-
 import styles from '../styles/pages/Index.module.css';
+
+const theme = createTheme({
+  typography: {
+    fontFamily: "'Montserrat', sans-serif"
+  }
+});
 
 export default function Index() {
   const [fade, setFade] = useState(false);
+  const [menuAnchor, setMenuAnchor] = useState(null);
 
   return (
     <div className={styles.container}>
       <Snake fade={fade} setFade={setFade} />
+      <div
+        className={styles.logo}
+        style={{ opacity: fade ? 0 : 1 }}
+      >
+        <Image
+          width="48"
+          height="48"
+          src="/img/logo.svg"
+          alt="logo"
+        />
+      </div>
       <div
         className={styles.links}
         style={{ opacity: fade ? 0 : 1 }}
@@ -70,34 +89,36 @@ export default function Index() {
           </Menu>
         </ThemeProvider>
       </div>
+      <div className={styles.content}>
         <div
-        className={styles.center}
-        style={fade ? { opacity: 0.5 } : {}}
-      >
-        <p>
-          {
-            'LearnCode.org'.split('').map((char, i) =>
-              <span
-                className={styles.char}
-                style={{ animationDelay: `${0.1 * i}s` }}
-                key={i}
-              >
-                {char}
-              </span>
-            )
-          }
-        </p>
-        <span>coming soon</span>
-        <div className={styles.icons}>
-          <Link to="https://github.com/LearnCodeOrg">
-            <GitHubIcon />
-          </Link>
-          <Link to="mailto:hi@learncode.org">
-            <EmailIcon />
-          </Link>
-          <Link to="https://twitter.com/LearnCodeOrg">
-            <TwitterIcon />
-          </Link>
+          className={styles.center}
+          style={fade ? { opacity: 0.5 } : {}}
+        >
+          <p>
+            {
+              'LearnCode.org'.split('').map((char, i) =>
+                <span
+                  className={styles.char}
+                  style={{ animationDelay: `${0.1 * i}s` }}
+                  key={i}
+                >
+                  {char}
+                </span>
+              )
+            }
+          </p>
+          <span>Learn to code and unleash your inner creativity.</span>
+          <div className={styles.icons}>
+            <Link to="https://github.com/LearnCodeOrg">
+              <GitHubIcon />
+            </Link>
+            <Link to="mailto:hi@learncode.org">
+              <EmailIcon />
+            </Link>
+            <Link to="https://twitter.com/LearnCodeOrg">
+              <TwitterIcon />
+            </Link>
+          </div>
         </div>
       </div>
     </div>
