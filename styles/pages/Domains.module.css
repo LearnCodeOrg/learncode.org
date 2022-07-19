@@ -15,3 +15,50 @@
   background: url('/img/background.png') repeat;
   filter: invert(95%);
 }
+
+.content {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  overflow: scroll;
+}
+
+.center {
+  min-height: 100%;
+  height: fit-content;
+  text-align: center;
+  background: #fff;
+  padding: 40px;
+  border-right: 2px solid #ddd;
+  border-left: 2px solid #ddd;
+}
+
+.center>h1 {
+  margin: 0 40px 20px 40px;
+}
+
+.contactButton {
+  width: 400px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactUs {
+  background: #3aaaf2;
+  padding: 20px;
+  font-weight: bold;
+}
+
+.contactUs:hover {
+  background: #0f97eb;
+}
+
+@media (max-width: 575.98px) {
+  .center {
+    padding: 40px 0;
+    width: 100%;
+    border: 0;
+  }
+}
