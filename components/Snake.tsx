@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { CSSProperties, Dispatch, useEffect, useRef, useState } from 'react';
 
 import styles from '../styles/components/Snake.module.css';
 
@@ -7,32 +7,41 @@ const borderPixels = 1; // pixels in grid border
 const blockEpsilon = 0.5; // amount of block needed to occupy
 const updateTime = 200; // update interval in milliseconds
 
-let canvas, ctx;
-let snakeX, snakeY;
-let appleX, appleY;
-let snake = [];
-let moves = [];
-let direction = 'right';
+type Direction = 'up' | 'down' | 'left' | 'right';
+
+let canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D;
+let snakeX: number, snakeY: number;
+let appleX: null | number, appleY: null | number;
+let snake: [number, number][] = [];
+let moves: Direction[] = [];
+let direction: Direction = 'right';
 let score = 0;
 let highScore = 0;
-let touchX = null, touchY = null;
+let touchX: null | number = null, touchY: null | number = null;
 let initialized = false;
 
 // screen bounds
 let minX = 0, maxX = mapSize - 1;
 let minY = 0, maxY = mapSize - 1;
 
-export default function Snake(props) {
+type Props = {
+  fade: boolean,
+  setFade: Dispatch<boolean>
+};
+
+export default function Snake(props: Props) {
   const { fade, setFade } = props;
 
-  const canvasRef = useRef();
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const [scoreText, setScoreText] = useState('');
   const [highScoreText, setHighScoreText] = useState('');
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
 
-  const textStyle = fade ? { opacity: 1 } : { opacity: 0, pointerEvents: 'none' };
+  const textStyle: CSSProperties = fade ?
+    { opacity: 1 } :
+    { opacity: 0, pointerEvents: 'none' };
 
   // draws canvas
   function draw() {
@@ -57,6 +66,8 @@ export default function Snake(props) {
       const tileY = tile[1] * tileSize - (width > height ? diff : 0);
       ctx.fillRect(tileX, tileY, tileSize, tileSize);
     }
+    // return if no apple
+    if (appleX === null || appleY === null) return;
     // draw apple
     ctx.fillStyle = 'red';
     const tileX = appleX * tileSize - (width > height ? 0 : diff);
@@ -71,7 +82,7 @@ export default function Snake(props) {
   }
 
   // moves snake in new direction
-  function move(newDirection) {
+  function move(newDirection: Direction) {
     const nextDirection = moves.length ? moves[0] : direction;
     if (newDirection === nextDirection) return;
     if (newDirection === 'up' && nextDirection === 'down') return;
@@ -82,7 +93,7 @@ export default function Snake(props) {
   }
 
   // called on key press
-  function onKeydown(e) {
+  function onKeydown(e: KeyboardEvent) {
     if (e.repeat) return;
     const key = e.key.toLowerCase();
     if (['w', 'arrowup'].includes(key)) move('up');
@@ -103,7 +114,7 @@ export default function Snake(props) {
     // update high score
     if (score > highScore) {
       highScore = score;
-      window.localStorage.setItem('highScore', highScore);
+      window.localStorage.setItem('highScore', highScore.toString());
     }
     score = 0;
     caption();
@@ -112,14 +123,15 @@ export default function Snake(props) {
 
   // sets score captions
   function caption() {
-    setScoreText(score);
+    setScoreText(score.toString());
     setHighScoreText(`★${highScore}`);
   }
 
   // update function
   function update() {
     // pop move
-    if (moves.length) direction = moves.shift();
+    const nextMove = moves.shift();
+    if (nextMove !== undefined) direction = nextMove;
     // move snake head
     if (direction === 'up') snakeY -= 1;
     if (direction === 'left') snakeX -= 1;
@@ -157,8 +169,12 @@ export default function Snake(props) {
 
   // on start
   useEffect(() => {
+    // get canvas context
+    if (!canvasRef.current) throw 'canvas not found';
     canvas = canvasRef.current;
-    ctx = canvas.getContext('2d');
+    const context = canvas.getContext('2d');
+    if (!context) throw 'context not found';
+    ctx = context;
     // initialize dimensions
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
@@ -178,15 +194,16 @@ export default function Snake(props) {
   }, []);
 
   // on touch start
-  function onTouchStart(e) {
+  function onTouchStart(e: TouchEvent) {
     const touch = e.touches[0];
     touchX = touch.clientX;
     touchY = touch.clientY;
   }
 
   // on touch move
-  function onTouchMove(e) {
-    if (!touchX || !touchY) return;
+  function onTouchMove(e: TouchEvent) {
+    // return if touch null
+    if (touchX === null || touchY === null) return;
     // get swipe delta
     var newX = e.touches[0].clientX;
     var newY = e.touches[0].clientY;
@@ -228,7 +245,7 @@ export default function Snake(props) {
     draw();
     // initialize
     if (!initialized) {
-      highScore = window.localStorage.getItem('highScore') ?? 0;
+      highScore = parseInt(window.localStorage.getItem('highScore') ?? '0');
       reset();
       initialized = true;
     }
