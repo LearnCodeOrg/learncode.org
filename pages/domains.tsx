@@ -11,7 +11,7 @@ export default function Domains() {
   useEffect(() => {
     // get domain from router
     const { d } = router.query;
-    if (!d) return;
+    if (typeof d !== 'string') return;
     // get listing
     const listing = document.getElementById(d.toLowerCase());
     if (!listing) return;

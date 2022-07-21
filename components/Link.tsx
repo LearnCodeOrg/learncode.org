@@ -1,4 +1,11 @@
-export default function Link(props) {
+import { ReactNode } from 'react';
+
+type Props = {
+  to: string,
+  children: ReactNode
+};
+
+export default function Link(props: Props) {
   const { to } = props;
 
   return (

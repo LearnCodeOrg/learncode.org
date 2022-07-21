@@ -21,7 +21,7 @@ const theme = createTheme({
 
 export default function Index() {
   const [fade, setFade] = useState(false);
-  const [menuAnchor, setMenuAnchor] = useState(null);
+  const [menuAnchor, setMenuAnchor] = useState<null | Element>(null);
 
   return (
     <div className={styles.container}>

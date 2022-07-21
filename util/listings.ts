@@ -1,4 +1,9 @@
-export const listings = [
+type Listing = {
+  domain: string,
+  description: string
+};
+
+export const listings: Listing[] = [
   {
     domain: 'Bicycle.social',
     description: 'geo-based social network'
