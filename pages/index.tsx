@@ -9,6 +9,7 @@ import Image from 'next/image';
 import NextLink from 'next/link';
 import Router from 'next/router';
 import { useState } from 'react';
+import KofiButton from '../components/KofiButton';
 import Link from '../components/Link';
 import Snake from '../components/Snake';
 import styles from '../styles/pages/Index.module.css';
@@ -46,14 +47,12 @@ export default function Index() {
           target="_blank"
           rel="noopener noreferrer"
         >CodeCreatively</a>
-        <a
-          href="https://ko-fi.com/learncode"
-          target="_blank"
-          rel="noopener noreferrer"
-        >Support LearnCode.org</a>
         <NextLink href="/domains">
           <a>Domains</a>
         </NextLink>
+        <div className={styles.kofiButton}>
+          <KofiButton text="Support LearnCode.org" />
+        </div>
       </div>
       <div
         className={styles.menu}
@@ -75,16 +74,16 @@ export default function Index() {
               CodeCreatively
             </MenuItem>
             <MenuItem onClick={() => {
-              window.open('https://ko-fi.com/learncode');
-              setMenuAnchor(null);
-            }}>
-              Support LearnCode.org
-            </MenuItem>
-            <MenuItem onClick={() => {
               Router.push('/domains')
               setMenuAnchor(null);
             }}>
               Domains
+            </MenuItem>
+            <MenuItem onClick={() => {
+              window.open('https://ko-fi.com/csaye');
+              setMenuAnchor(null);
+            }}>
+              Support LearnCode.org
             </MenuItem>
           </Menu>
         </ThemeProvider>

@@ -32,6 +32,12 @@
   text-decoration: underline;
 }
 
+.kofiButton {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+}
+
 .menu {
   position: absolute;
   top: 0;
