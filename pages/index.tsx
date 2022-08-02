@@ -46,7 +46,16 @@ export default function Index() {
           href="https://www.codecreatively.com/"
           target="_blank"
           rel="noopener noreferrer"
-        >CodeCreatively</a>
+        >
+          CodeCreatively
+        </a>
+        <a
+          href="https://www.infive.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Infive
+        </a>
         <NextLink href="/domains">
           <a>Domains</a>
         </NextLink>
@@ -72,6 +81,12 @@ export default function Index() {
               setMenuAnchor(null);
             }}>
               CodeCreatively
+            </MenuItem>
+            <MenuItem onClick={() => {
+              window.open('https://www.infive.org/');
+              setMenuAnchor(null);
+            }}>
+              Infive
             </MenuItem>
             <MenuItem onClick={() => {
               Router.push('/domains')
