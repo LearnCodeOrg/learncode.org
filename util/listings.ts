@@ -45,10 +45,6 @@ export const listings: Listing[] = [
     description: 'code tutoring service'
   },
   {
-    domain: 'CodeWG.com',
-    description: 'code with games'
-  },
-  {
     domain: 'CodeWith.games',
     description: 'code with games'
   },
@@ -71,10 +67,6 @@ export const listings: Listing[] = [
   {
     domain: 'GiftedCoding.com',
     description: 'code tutoring service'
-  },
-  {
-    domain: 'InFive.org',
-    description: 'five-minute online lessons'
   },
   {
     domain: 'TalentCoding.com',
