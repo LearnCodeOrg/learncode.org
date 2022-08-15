@@ -12,7 +12,7 @@ import { useState } from 'react';
 import KofiButton from '../components/KofiButton';
 import Link from '../components/Link';
 import Snake from '../components/Snake';
-import styles from '../styles/pages/Index.module.css';
+import styles from '../styles/pages/Index.module.scss';
 
 const theme = createTheme({
   typography: {

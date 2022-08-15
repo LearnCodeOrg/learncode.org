@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 
-import '../styles/globals.css';
+import '../styles/globals.scss';
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
