@@ -6,12 +6,10 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Image from 'next/image';
-import NextLink from 'next/link';
-import Router from 'next/router';
 import { useState } from 'react';
+import Background from '../components/Background';
 import KofiButton from '../components/KofiButton';
 import Link from '../components/Link';
-import Snake from '../components/Snake';
 import styles from '../styles/pages/Index.module.scss';
 
 const theme = createTheme({
@@ -21,16 +19,12 @@ const theme = createTheme({
 });
 
 export default function Index() {
-  const [fade, setFade] = useState(false);
   const [menuAnchor, setMenuAnchor] = useState<null | Element>(null);
 
   return (
     <div className={styles.container}>
-      <Snake fade={fade} setFade={setFade} />
-      <div
-        className={styles.logo}
-        style={{ opacity: fade ? 0 : 1 }}
-      >
+      <Background />
+      <div className={styles.logo}>
         <Image
           width="48"
           height="48"
@@ -38,10 +32,7 @@ export default function Index() {
           alt="logo"
         />
       </div>
-      <div
-        className={styles.links}
-        style={{ opacity: fade ? 0 : 1 }}
-      >
+      <div className={styles.links}>
         <a
           href="https://www.codecreatively.com/"
           target="_blank"
@@ -56,17 +47,11 @@ export default function Index() {
         >
           Infive
         </a>
-        <NextLink href="/domains">
-          <a>Domains</a>
-        </NextLink>
         <div className={styles.kofiButton}>
           <KofiButton text="Support LearnCode.org" />
         </div>
       </div>
-      <div
-        className={styles.menu}
-        style={{ opacity: fade ? 0 : 1 }}
-      >
+      <div className={styles.menu}>
         <IconButton onClick={e => setMenuAnchor(e.currentTarget)}>
           {menuAnchor ? <MenuOpenIcon /> : <MenuIcon />}
         </IconButton>
@@ -89,12 +74,6 @@ export default function Index() {
               Infive
             </MenuItem>
             <MenuItem onClick={() => {
-              Router.push('/domains')
-              setMenuAnchor(null);
-            }}>
-              Domains
-            </MenuItem>
-            <MenuItem onClick={() => {
               window.open('https://ko-fi.com/csaye');
               setMenuAnchor(null);
             }}>
@@ -103,36 +82,34 @@ export default function Index() {
           </Menu>
         </ThemeProvider>
       </div>
+      <div className={styles.icons}>
+        <Link to="https://github.com/LearnCodeOrg">
+          <GitHubIcon />
+        </Link>
+        <Link to="mailto:hi@learncode.org">
+          <EmailIcon />
+        </Link>
+        <Link to="https://twitter.com/LearnCodeOrg">
+          <TwitterIcon />
+        </Link>
+      </div>
       <div className={styles.content}>
-        <div
-          className={styles.center}
-          style={fade ? { opacity: 0.5 } : {}}
-        >
-          <p>
+        <div className={styles.center}>
+          <h1>
             {
               'LearnCode.org™'.split('').map((char, i) =>
                 <span
                   className={styles.char}
-                  style={{ animationDelay: `${0.1 * i}s` }}
+                  style={{ animationDelay: `${0.1 * (i + 1)}s` }}
                   key={i}
                 >
                   {char}
                 </span>
               )
             }
-          </p>
-          <span>Learn to code and unleash your inner creativity.</span>
-          <div className={styles.icons}>
-            <Link to="https://github.com/LearnCodeOrg">
-              <GitHubIcon />
-            </Link>
-            <Link to="mailto:hi@learncode.org">
-              <EmailIcon />
-            </Link>
-            <Link to="https://twitter.com/LearnCodeOrg">
-              <TwitterIcon />
-            </Link>
-          </div>
+          </h1>
+          <p><i>Learn to code and unleash your inner creativity.</i></p>
+          <p><b>Coming soon.</b></p>
         </div>
       </div>
     </div>
