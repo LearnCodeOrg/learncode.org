@@ -1,0 +1,25 @@
+.container {
+  z-index: -1;
+  position: fixed;
+  inset: -64px;
+  transform: rotateZ(-4deg);
+
+  >div {
+    position: absolute;
+    inset: -64px;
+    background: url('/img/background.png') repeat;
+    filter: invert(95%);
+    animation: slide 4s linear infinite;
+  }
+
+  @keyframes slide {
+    from {
+      transform: translateX(-64px);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
+
+}
