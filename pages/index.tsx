@@ -33,20 +33,6 @@ export default function Index() {
         />
       </div>
       <div className={styles.links}>
-        <a
-          href="https://www.codecreatively.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          CodeCreatively
-        </a>
-        <a
-          href="https://www.infive.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Infive
-        </a>
         <div className={styles.kofiButton}>
           <KofiButton text="Support LearnCode.org" />
         </div>
