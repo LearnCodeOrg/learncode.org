@@ -140,6 +140,16 @@
           font-size: 14px;
         }
       }
+
+      .link {
+        text-decoration: none;
+        color: #2196f3;
+        font-weight: bold;
+
+        &:hover {
+          color: #3f51b5;
+        }
+      }
     }
   }
 }
