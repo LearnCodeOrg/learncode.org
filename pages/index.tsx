@@ -83,7 +83,16 @@ export default function Index() {
             }
           </h1>
           <p><i>Learn to code and unleash your inner creativity.</i></p>
-          <p><b>Coming soon.</b></p>
+          <p>
+            <a
+              href="https://www.codecreatively.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.link}
+            >
+              CodeCreatively
+            </a>
+          </p>
         </div>
       </div>
     </div>
