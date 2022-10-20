@@ -48,18 +48,6 @@ export default function Index() {
             onClose={() => setMenuAnchor(null)}
           >
             <MenuItem onClick={() => {
-              window.open('https://www.codecreatively.com/');
-              setMenuAnchor(null);
-            }}>
-              CodeCreatively
-            </MenuItem>
-            <MenuItem onClick={() => {
-              window.open('https://www.infive.org/');
-              setMenuAnchor(null);
-            }}>
-              Infive
-            </MenuItem>
-            <MenuItem onClick={() => {
               window.open('https://ko-fi.com/csaye');
               setMenuAnchor(null);
             }}>
